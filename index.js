@@ -1,5 +1,8 @@
 //require inquire and console.table
 //require the database class
+//const express = require("express");
+const inquirer = require("inquirer");
+const console = require("console.table")
 
 //esta es la que hace las preguntas
 
