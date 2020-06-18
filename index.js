@@ -60,6 +60,16 @@ function runSearch() {
     });
 }
 
+function addEmployee() {
+  inquirer
+  .prompt({
+    name: 'department',
+    type: 'input',
+    message: "Which department would you like to add?"
+  })
+  .then(function (answer))
+}
+
 function artistSearch() {
   inquirer
     .prompt({
