@@ -4,6 +4,7 @@
 const inquirer = require("inquirer");
 const console = require("console.table")
 const mysql = require("mysql");
+const { createDepartments, connection } = require("./db/Database");
 require('dotenv').config();
 
 
@@ -37,12 +38,12 @@ function runSearch() {
     })
     .then(function (answer) {
       switch (answer.action) {
-        case 'Find songs by artist':
-          artistSearch();
+        case 'create':
+          createDepartments();
           break;
 
-        case 'Find all artists who appear more than once':
-          multiSearch();
+        case 'View information':
+          viewDepartments();
           break;
 
         case 'Find data within a specific range':
@@ -67,7 +68,13 @@ function addEmployee() {
     type: 'input',
     message: "Which department would you like to add?"
   })
-  .then(function (answer))
+  .then(function (answer){
+    let query = "SELECT department FROM id WHERE ?";
+    connection.query(query, { department: answer.department}, function(err,res) {
+      if (err) throw err;
+      
+    })
+  })
 }
 
 function artistSearch() {
