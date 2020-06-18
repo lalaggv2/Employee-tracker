@@ -6,14 +6,9 @@ const console = require("console.table")
 const mysql = require("mysql");
 require('dotenv').config();
 
-const connection = mysql.createConnection({
-  // get all of our configuration values from the .env file
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+
+//create a prommpt when the app is started to ask the user what he wants to do
+//choices add dept, add role, addemployee
 
 connection.connect(function (err) {
   if (err) throw err;
@@ -28,10 +23,15 @@ function runSearch() {
       type: 'list',
       message: 'What would you like to do?',
       choices: [
-        'Find songs by artist',
-        'Find all artists who appear more than once',
-        'Find data within a specific range',
-        'Search for a specific song',
+        'Add Departments',
+        'Add roles',
+        'Add a new employee',
+        'View Departments',
+        'View roles',
+        'View employees',
+        'Update Departments',
+        'Update roles',
+        'Update employee',
         'exit',
       ],
     })

@@ -17,7 +17,7 @@ dpt_name VARCHAR(30) to hold department name
   PRIMARY KEY (id)
 );
 
-CREATE TABLE role
+CREATE TABLE roles
 (
   id INT PRIMARY KEY,
   title VARCHAR(30),
@@ -38,8 +38,8 @@ INSERT INTO role (id, title, salary, department_id)
 VALUES (1, "Founder", 250, 10);
 
 SELECT * FROM departmentsDB;
-select * from top_albums;
-SELECT * FROM top5000;
-select * from top_albums;
+select * from role_id;
+SELECT * FROM employee;
+
 
 
