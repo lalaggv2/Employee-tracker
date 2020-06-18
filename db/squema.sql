@@ -3,6 +3,13 @@ CREATE database employee_trackerDB;
 
 USE employee_trackerDB;
 
+
+-- create a department tabl
+
+-- create a role table
+
+-- cre
+
 CREATE TABLE id
 (
  id INT PRIMARY KEY,
@@ -30,7 +37,9 @@ CREATE TABLE employee
 INSERT INTO role (id, title, salary, department_id)
 VALUES (1, "Founder", 250, 10);
 
-SELECT *
-FROM top5000;
+SELECT * FROM departmentsDB;
+select * from top_albums;
+SELECT * FROM top5000;
+select * from top_albums;
 
 
