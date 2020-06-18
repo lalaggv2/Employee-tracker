@@ -13,7 +13,7 @@ USE employee_trackerDB;
 CREATE TABLE id
 (
  id INT PRIMARY KEY,
-dpt_name VARCHAR(30) to hold department name
+ dpt_name VARCHAR(30)
   PRIMARY KEY (id)
 );
 
