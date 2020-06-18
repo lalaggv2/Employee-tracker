@@ -12,7 +12,7 @@ dpt_name VARCHAR(30) to hold department name
 
 CREATE TABLE role
 (
-  id - INT PRIMARY KEY,
+  id INT PRIMARY KEY,
   title VARCHAR(30),
   salary DECIMAL,
   department_id INT
@@ -27,5 +27,10 @@ CREATE TABLE employee
   manager_id INT
 )
 
+INSERT INTO role (id, title, salary, department_id)
+VALUES (1, "Founder", 250, 10);
+
 SELECT *
 FROM top5000;
+
+
