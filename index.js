@@ -89,7 +89,7 @@ function viewDepartments() {
 function addEmployee() {
   inquirer
     .prompt({
-      name: 'employee first',
+      name: 'employee_first',
       type: 'input',
       message: "What's the first name of the employee you would like to add?"
     }, {
@@ -98,17 +98,12 @@ function addEmployee() {
       message: 'What is the last name of the employee?'
     })
     .then(answer => {
-      db.createEmployee(answer.employee)
+      db.createEmployee(answer.employee_first)
       runSearch()
     })
 };
 
-    //   let query = "SELECT  FROM id WHERE ?";
-    //   connection.query(query, { department: answer.department }, function (err, res) {
-    //     if (err) throw err;
-
-    //   })
-    // })
+function addRole
 
 
 // function artistSearch() {

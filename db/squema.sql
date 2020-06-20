@@ -36,8 +36,8 @@ CREATE TABLE employee
 INSERT INTO role (id, title, salary, department_id)
 VALUES (1, "Founder", 250, 10);
 
-SELECT * FROM departmentsDB;
-select * from role_id;
+SELECT * FROM departments;
+select * from roles;
 SELECT * FROM employee;
 
 
