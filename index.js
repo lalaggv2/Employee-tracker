@@ -73,27 +73,43 @@ function addDepartment() {
     db.createDepartment(answer.name)
     runSearch()
   })
-}
+};
 
 function viewDepartments() {
-
-}
+  inquirer.prompt({
+    name: 'name',
+    type: 'text',
+    message: 'Which department do you want to see?'
+  }).then(answer => {
+    db.viewDepartment(answer.name)
+    runSearch()
+  })
+};
 
 function addEmployee() {
   inquirer
     .prompt({
-      name: 'department',
+      name: 'employee first',
       type: 'input',
-      message: "Which department would you like to add?"
+      message: "What's the first name of the employee you would like to add?"
+    }, {
+      name: "employee last",
+      type: 'input',
+      message: 'What is the last name of the employee?'
     })
-    .then(function (answer) {
-      let query = "SELECT department FROM id WHERE ?";
-      connection.query(query, { department: answer.department }, function (err, res) {
-        if (err) throw err;
+    .then(answer => {
+      db.createEmployee(answer.employee)
+      runSearch()
+    })
+};
 
-      })
-    })
-}
+    //   let query = "SELECT  FROM id WHERE ?";
+    //   connection.query(query, { department: answer.department }, function (err, res) {
+    //     if (err) throw err;
+
+    //   })
+    // })
+
 
 // function artistSearch() {
 //   inquirer

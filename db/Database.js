@@ -14,9 +14,9 @@ class Database {
   }
 
 
-  createEmployee() {
+  createEmployee(employeeName) {
     return this.connection.query(
-      // SELECT ...LO QUE SEA LA QUERY
+      `INSERT INTO employees (first_name, last_name) VALUES ("${employeeName}")`
     );
   }
 
