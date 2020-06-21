@@ -14,9 +14,14 @@ class Database {
   }
 
 
-  createEmployee(employeeName) {
+  createEmployee(newEmployee) {
     return this.connection.query(
-      `INSERT INTO employees (first_name, last_name) VALUES ("${employeeName}")`
+      `INSERT INTO employee (first_name, last_name, role_id, manager_id)) VALUES ("${newEmployee}")`
+      // first_name: answer.employee_first, 
+      // last_name: answer.employee_last,
+      // role_id: answer.role,
+      // manager_id: answer.manager,
+
     );
   }
 

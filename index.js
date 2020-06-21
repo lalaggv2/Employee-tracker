@@ -6,6 +6,7 @@ const inquirer = require("inquirer");
 const console = require("console.table");
 const mysql = require("mysql");
 const db = require("./db/Database");
+const { updateDepartments, updateRoles } = require('./db/Database');
 // const { type } = require("os");
 
 
@@ -48,13 +49,33 @@ function runSearch() {
           viewDepartments()
           break;
 
-        // case 'Find data within a specific range':
-        //   rangeSearch();
-        //   break;
+        case 'Add Employee':
+          addEmployee()
+          break;
 
-        // case 'Search for a specific song':
-        //   songSearch();
-        //   break;
+        case 'View Employee':
+          viewEmployee()
+          break;
+
+        case 'Add roles':
+          addRoles()
+          break;
+
+        case 'View roles':
+          viewRoles()
+          break;
+
+        case 'Update Departments':
+          updateDepartments()
+          break;
+
+        case 'Update Employee':
+          updateEmployees()
+          break;
+
+        case 'Update Roles':
+          updateRoles()
+          break;
 
         case 'exit':
           break;
@@ -96,139 +117,49 @@ function addEmployee() {
       name: "employee last",
       type: 'input',
       message: 'What is the last name of the employee?'
-    })
+    },
+      {
+        name: 'role',
+        type: 'list',
+        message: "What's the employee role?",
+        choices: [Finance, IT, Marketing, HR, Sales, Manufacturing, Engineering]
+      },
+      {
+        name: 'manager',
+        type: 'list',
+        message: "Who's the employee manager?",
+      })
     .then(answer => {
       db.createEmployee(answer.employee_first)
       runSearch()
     })
 };
 
-function addRole
-
-
-// function artistSearch() {
+// function addEmployee() {
 //   inquirer
 //     .prompt({
-//       name: 'artist',
-//       type: 'input',
-//       message: 'What artist would you like to search for?',
+//       name: "employee_first",
+//       type: "input",
+//       message: "What's the first name of the employee you would like to add?",
 //     })
-//     .then(function (answer) {
-//       var query = 'SELECT position, song, year FROM top5000 WHERE ?';
-//       connection.query(query, { artist: answer.artist }, function (err, res) {
-//         if (err) throw err;
-//         for (var i = 0; i < res.length; i++) {
-//           console.log(
-//             'Position: ' +
-//               res[i].position +
-//               ' || Song: ' +
-//               res[i].song +
-//               ' || Year: ' +
-//               res[i].year
-//           );
-//         }
-//         runSearch();
-//       });
+//     .then((answer) => {
+//       const firstName = answer;
+
+//       //second question
+//       inquirer
+//         .prompt({
+//           name: "employee_last",
+//           type: "input",
+//           message: "What is the last name of the employee?",
+//         })
+//         .then((answer) => {
+//           db.createEmployee(firstName, answer.employee_last);
+//         });
 //     });
 // }
 
-// function multiSearch() {
-//   var query = 'SELECT artist FROM top5000 GROUP BY artist HAVING count(*) > 1';
-//   connection.query(query, function (err, res) {
-//     if (err) throw err;
-//     for (var i = 0; i < res.length; i++) {
-//       console.log(res[i].artist);
-//     }
-//     runSearch();
+// function addRole() {
+//   inquirer.prompt ({
+//     name: 
 //   });
-// }
-
-// function rangeSearch() {
-//   inquirer
-//     .prompt([
-//       {
-//         name: 'start',
-//         type: 'input',
-//         message: 'Enter starting position: ',
-//         validate: function (value) {
-//           if (isNaN(value) === false) {
-//             return true;
-//           }
-//           return false;
-//         },
-//       },
-//       {
-//         name: 'end',
-//         type: 'input',
-//         message: 'Enter ending position: ',
-//         validate: function (value) {
-//           if (isNaN(value) === false) {
-//             return true;
-//           }
-//           return false;
-//         },
-//       },
-//     ])
-//     .then(function (answer) {
-//       var query =
-//         'SELECT position,song,artist,year FROM top5000 WHERE position BETWEEN ? AND ?';
-//       connection.query(query, [answer.start, answer.end], function (err, res) {
-//         if (err) throw err;
-//         for (var i = 0; i < res.length; i++) {
-//           console.log(
-//             'Position: ' +
-//               res[i].position +
-//               ' || Song: ' +
-//               res[i].song +
-//               ' || Artist: ' +
-//               res[i].artist +
-//               ' || Year: ' +
-//               res[i].year
-//           );
-//         }
-//         runSearch();
-//       });
-//     });
-// }
-
-// function songSearch() {
-//   inquirer
-//     .prompt({
-//       name: 'song',
-//       type: 'input',
-//       message: 'What song would you like to look for?',
-//     })
-//     .then(function (answer) {
-//       console.log(answer.song);
-//       connection.query(
-//         'SELECT * FROM top5000 WHERE ?',
-//         { song: answer.song },
-//         function (err, res) {
-//           if (err) throw err;
-//           console.log(
-//             'Position: ' +
-//               res[0].position +
-//               ' || Song: ' +
-//               res[0].song +
-//               ' || Artist: ' +
-//               res[0].artist +
-//               ' || Year: ' +
-//               res[0].year
-//           );
-//           runSearch();
-//         }
-//       );
-//     });
-// }
-
-/* create aprompt when the app is tstarted. this will ask the user what ghty wanto to do: update, create or view (array of choices as objects) {
-  name:
-  value:
-}
-]
-
-funciones to handle the response and call an especific function
-
-if the user sele ts to biew employees, its' going to call the getEmployees function below
-
-call the findEmployees function for the database class that we created */
+// };
