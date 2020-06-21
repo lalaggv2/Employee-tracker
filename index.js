@@ -135,31 +135,27 @@ function addEmployee() {
     })
 };
 
-// function addEmployee() {
-//   inquirer
-//     .prompt({
-//       name: "employee_first",
-//       type: "input",
-//       message: "What's the first name of the employee you would like to add?",
-//     })
-//     .then((answer) => {
-//       const firstName = answer;
+function updateEmployeeRole() {
+  inquirer
+    .prompt({
+      name: "employee name",
+      type: "list",
+      message: "which employee would you like to update?"
+      choices: ["employee.id"]
+    },
+      {
+        name: "update role",
+        type: "list",
+        message: "What's the new role of the employee you would like to update?",
+        choices: ['roles.title']
+      })
+    .then((answer) => {
+      updateRoles()
+    })
+};
 
-//       //second question
-//       inquirer
-//         .prompt({
-//           name: "employee_last",
-//           type: "input",
-//           message: "What is the last name of the employee?",
-//         })
-//         .then((answer) => {
-//           db.createEmployee(firstName, answer.employee_last);
-//         });
-//     });
-// }
-
-// function addRole() {
-//   inquirer.prompt ({
-//     name: 
-//   });
-// };
+function addRole() {
+  inquirer.prompt({
+    name: 
+  });
+};
