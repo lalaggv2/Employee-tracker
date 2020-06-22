@@ -6,7 +6,7 @@
 
 ### Email Address ###
 
-null
+luangu2020@gmail.com
 
 ### Description ###
 
@@ -52,6 +52,6 @@ node test
 
 ### Questions ###
 
-<img src="https://avatars0.githubusercontent.com/u/6589798?v=4" alt="github avatar"/>
+<img src="https://avatars0.githubusercontent.com/u/6589798?v=4" width=200px alt="github avatar"/>
 
 For questions or additional information contact [lalaggv2](https://api.github.com/users/lalaggv2) directly at null.
