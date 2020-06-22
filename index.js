@@ -23,14 +23,13 @@ function runSearch() {
       message: 'What would you like to do?',
       choices: [
         'Add Department',
-        'Add role',
         'Add a new employee',
+        'Add role',
         'View Departments',
         'View roles',
         'View employees',
         'Update employee roles',
         'Remove employee',
-        'Remove department',
         'exit',
       ],
     })
@@ -53,7 +52,7 @@ function runSearch() {
           break;
 
         case 'View Employees':
-          seeEmployee()
+          viewEmployee()
           break;
 
         case 'Remove Employee':
@@ -179,7 +178,7 @@ function addNewRole() {
 };
 
 
-function seeEmployee() {
+function viewEmployee() {
   connection.query("SELECT * FROM employee", (err, result) => {
     if (err) throw err;
     console.table(result);
@@ -243,12 +242,12 @@ function deleteEmployee() {
     {
       type: "input",
       message: "What employee would you like to delete?",
-      name: "empdelete"
+      name: "employeeDelete"
     }
   ]).then(res => {
     connection.query("DELETE from employee_tracker.employee WHERE id=?",
       [
-        res.empdelete
+        res.employeedelete
       ], (err, res) => {
         if (err) throw err;
         console.log("Employee has been deleted:)");
@@ -268,33 +267,6 @@ function deleteEmployee() {
 //   );
 // }
 
-// function addEmployee() {
-//   inquirer
-//     .prompt({
-//       name: 'employee_first',
-//       type: 'input',
-//       message: "What's the first name of the employee you would like to add?"
-//     }, {
-//       name: "employee last",
-//       type: 'input',
-//       message: 'What is the last name of the employee?'
-//     },
-//       {
-//         name: 'role',
-//         type: 'list',
-//         message: "What's the employee role?",
-//         choices: [Finance, IT, Marketing, HR, Sales, Manufacturing, Engineering]
-//       },
-//       {
-//         name: 'manager',
-//         type: 'list',
-//         message: "Who's the employee manager?",
-//       })
-//     .then(answer => {
-//       db.createEmployee(answer.employee_first)
-//       runSearch()
-//     })
-// };
 
 // function updateEmployeeRole() {
 //   inquirer
