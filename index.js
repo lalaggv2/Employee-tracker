@@ -4,7 +4,7 @@ const inquirer = require("inquirer");
 const cTable = require("console.table");
 const mysql = require("mysql");
 const db = require("./db/Database");
-const { updateDepartments, updateRoles } = require('./db/Database');
+//const { updateDepartments, updateRoles } = require('./db/Database');
 const connection = require('./db/connection');
 // const { type } = require("os");
 
@@ -51,8 +51,8 @@ function runSearch() {
           addNewRole()
           break;
 
-        case 'View Employees':
-          viewEmployee()
+        case 'Employee List':
+          viewEmployees()
           break;
 
         case 'Remove Employee':
@@ -93,23 +93,6 @@ function viewDepartments() {
     runSearch();
   })
 }
-
-// function updateDpts() {
-//   inquirer.prompt({
-//     name: 'name',
-//     type: 'text',
-//     message: 'Which department do you want to update?'
-//   },
-//     {
-//       name: "new department",
-//       type: 'text',
-//       message: "What's the new name of the department?",
-//     }).then(answer => {
-//       db.updateDepartment(answer)
-//       runSearch;
-//     });
-// };
-
 
 function addNewEmployee() {
   inquirer.prompt([
@@ -177,9 +160,8 @@ function addNewRole() {
   });
 };
 
-
-function viewEmployee() {
-  connection.query("SELECT * FROM employee", (err, result) => {
+function viewEmployees() {
+  connection.query("SELECT employee.id, employee.first_name, employee.last_name, employee.role_id FROM employee LEFT JOIN roles ON employee.role_id = roles.id", (err, result) => {
     if (err) throw err;
     console.table(result);
     runSearch();
@@ -247,7 +229,7 @@ function deleteEmployee() {
   ]).then(res => {
     connection.query("DELETE from employee_tracker.employee WHERE id=?",
       [
-        res.employeedelete
+        res.employeeDelete
       ], (err, res) => {
         if (err) throw err;
         console.log("Employee has been deleted:)");
@@ -255,40 +237,3 @@ function deleteEmployee() {
       })
   })
 }
-
-// function viewAllEmployees() {
-//   connection.query(
-//     "SELECT employee.id, employee.first_name, employee.last_name, employee_role.title, department.name AS dept FROM employee JOIN employee_role ON employee_role.id = employee.role_id JOIN department on employee_role.department_id = department.id;",
-//     (err, res) => {
-//       if (err) throw err;
-//       console.table(res);
-//       runSearch();
-//     }
-//   );
-// }
-
-
-// function updateEmployeeRole() {
-//   inquirer
-//     .prompt({
-//       name: "employee name",
-//       type: "list",
-//       message: "which employee would you like to update?"
-//       //  choices: ["employee.id"]
-//     },
-//       {
-//         name: "update role",
-//         type: "list",
-//         message: "What's the new role of the employee you would like to update?",
-//         //    choices: ['roles.title']
-//       })
-//     .then((answer) => {
-//       updateRoles()
-//     })
-// };
-
-// function addRole() {
-//   inquirer.prompt({
-//     name: 
-//   });
-// };
