@@ -22,25 +22,34 @@ function runSearch() {
       type: 'list',
       message: 'What would you like to do?',
       choices: [
-        'Add Department',
+        'Add department',
         'Add a new employee',
         'Add role',
-        'View Departments',
+        'View departments',
         'View roles',
         'View employees',
-        'Update employee roles',
+        'Update employee',
         'Remove employee',
         'exit',
       ],
     })
     .then(function (answer) {
       switch (answer.action) {
-        case 'Add Department':
-          addDepartment();
+
+        case 'View departments':
+          viewDepartments()
           break;
 
-        case 'View Departments':
-          viewDepartments()
+        case 'View roles':
+          viewRoles()
+          break;
+
+        case 'View employees':
+          viewEmployees()
+          break;
+
+        case 'Add department':
+          addDepartment();
           break;
 
         case 'Add a new employee':
@@ -51,24 +60,19 @@ function runSearch() {
           addNewRole()
           break;
 
-        case 'Employee List':
-          viewEmployees()
-          break;
 
-        case 'Remove Employee':
+        case 'Remove employee':
           deleteEmployee()
           break;
 
-        case 'Update Employee':
+        case 'Update employee':
           updateEmployee()
           break;
 
-        case 'View roles':
-          viewRoles()
+        case 'exit':
+          console.log('Good-bye.');
           break;
 
-        case 'exit':
-          break;
         default:
           break
       }
@@ -227,7 +231,7 @@ function deleteEmployee() {
       name: "employeeDelete"
     }
   ]).then(res => {
-    connection.query("DELETE from employee_tracker.employee WHERE id=?",
+    connection.query("DELETE from employee_trackerdb.employee WHERE id=?",
       [
         res.employeeDelete
       ], (err, res) => {
